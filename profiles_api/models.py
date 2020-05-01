@@ -11,3 +11,17 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     objects = UserProfileManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
+
+    def get_full_name(self):
+        """ Retrieve full name for the user"""
+        return self.name
+
+    def get_short_name(self):
+        """ Retrieve short name for the user"""
+
+    def __str__(self):
+        """ return string representation of user"""
+        return self.email
