@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\arm7m\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+    "python.pythonPath": "C:\\Users\\arm7m\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.autoComplete.extraPaths": ["D:\\Development\\OnGoing_Projects\\profiles_rest_api\\profiles_rest_api"]
 }
