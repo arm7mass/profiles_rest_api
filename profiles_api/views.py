@@ -8,10 +8,12 @@ from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 
-from profiles_api import models
-from profiles_api import serializers
-from profiles_api import permissions
+from . import models
+from . import serializers
+from . import permissions
 
 
 
@@ -104,7 +106,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = models.UserProfile.objects.all()
 
     authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.UpdateOwnProfile, )
+    permission_classes = (permissions.PostOwnStatus, IsAuthenticated )
 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name', 'email',)
@@ -118,6 +120,8 @@ class UserProfileFeedViewSet(viewsets.ModelViewSet):
     # handle creating reading and updating profile feed items
     authentication_classes = (TokenAuthentication, )
     serializer_class = serializers.ProfileFeedItemSerializer
+
+    permission_classes = (permissions.UpdateOwnStatus, IsAuthenticatedOrReadOnly)
 
     queryset = models.ProfileFeedItem.objects.all()
 
