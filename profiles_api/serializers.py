@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-from rest_framework import serializers
-
-class HelloSerializer(serializers.Serializer):
-    """ Serialize a name field for testing out PIview"""
-    name = serializers.CharField(max_length=10)
-=======
 from rest_framework import serializers
 from profiles_api import models
 
@@ -41,4 +34,3 @@ class ProfileFeedItemSerializer(serializers.ModelSerializer):
         model = models.ProfileFeedItem
         fields = ('id', 'user_profile', 'status_text', 'created_on')
         extra_kwargs = {'user_profile': {'read_only':True}}
->>>>>>> 6b3a6b0fa2cb8d283163dce8e6eea9f0e67751be
